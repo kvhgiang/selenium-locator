@@ -59,12 +59,12 @@ public class hrmAdminPage {
             el6_optionRoleAdmin.click();
 
             // ==== Locator 7: Option ESS inside User Role
-            By by7_optESS = By.xpath("//span[text()='ESS']");
+            By by7_optESS = By.xpath("//div[@role='listbox']//span[text()='ESS']");
 
             // ==== Locator 8: Input Employee Name
             By by8_employeeName = By.xpath("//input[@placeholder='Type for hints...']");
             WebElement el8_inputEmployeeName = wait.until(ExpectedConditions.elementToBeClickable(by8_employeeName));
-            el8_inputEmployeeName.sendKeys("pri");
+//            el8_inputEmployeeName.sendKeys("pri");
 
 
             // ================= Open User Role & choose ESS instead of Admin =================
@@ -73,6 +73,44 @@ public class hrmAdminPage {
             el5_selectUserRole.click();
             WebElement el7_optionRoleESS = wait.until(ExpectedConditions.elementToBeClickable(by7_optESS));
             el7_optionRoleESS.click();
+
+            // ==== Locator 9: Button Reset
+            By by9_reset = By.xpath("//button[normalize-space()='Reset']");
+            WebElement el9_btnReset = wait.until(ExpectedConditions.elementToBeClickable(by9_reset));
+
+            // ==== Locator 10: Button Search
+            By by10_search = By.xpath("//button[normalize-space()='Search']");
+            WebElement el10_btnSearch = wait.until(ExpectedConditions.elementToBeClickable(by10_search));
+
+            // ==== Locator 11: Nav Item User Management
+            By by11_userManagement = By.xpath("//span[normalize-space()='User Management']");
+            WebElement el11_navItemUserManagement = wait.until(ExpectedConditions.elementToBeClickable(by11_userManagement));
+
+            // ==== Locator 12: Cell1 Username
+            By by12 = By.xpath("(//div[@class='oxd-table-card'])[2]//div[@role='cell'][2]");
+            WebElement el12 = wait.until(ExpectedConditions.elementToBeClickable(by12));
+
+            By by13 = By.xpath("(//div[@class='oxd-table-card'])[2]//div[@role='cell'][3]");
+            WebElement el13 = wait.until(ExpectedConditions.elementToBeClickable(by13));
+
+            By by14 = By.xpath("//button[.//i[contains(@class,'bi-trash')]]");
+            WebElement el14 = wait.until(ExpectedConditions.elementToBeClickable(by14));
+
+            By by15 = By.xpath("//button[.//i[contains(@class,'bi-pencil-fill')]]");
+            WebElement el15 = wait.until(ExpectedConditions.elementToBeClickable(by15));
+
+            By by16 = By.xpath("//div[@role='columnheader'][contains(.,'User Role')]");
+            WebElement el16 = wait.until(ExpectedConditions.elementToBeClickable(by16));
+
+//            By by17 = By.xpath("(//div[@class='oxd-table-header-cell'])//span[normalize-space()='Employee Name']");
+//            WebElement el17 = wait.until(ExpectedConditions.elementToBeClickable(by17));
+
+            System.out.printf("el12: %s\n", el12.getText());
+            System.out.printf("el13: %s\n", el13.getText());
+            System.out.printf("el14: %s\n", el14.getTagName());
+            System.out.printf("el15: %s\n", el15.getTagName());
+            System.out.printf("el16: %s\n", el16.getText());
+//            System.out.printf("el17: %s\n", el17.getText());
             //
             Thread.sleep(5000);
             driver.quit();
