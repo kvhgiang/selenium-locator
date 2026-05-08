@@ -1,9 +1,12 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class hrmAdminPage {
     public static void main(String[] args) {
@@ -14,32 +17,63 @@ public class hrmAdminPage {
         WebDriver driver = new ChromeDriver(options);
         try {
             driver.get("https://opensource-demo.orangehrmlive.com/");
-            Thread.sleep(2000);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-            /* Login */
-            driver.findElement(By.name("username")).sendKeys("Admin");
-            Thread.sleep(1000);
+            // ================= Login =================
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("username"))).sendKeys("Admin");
             driver.findElement(By.name("password")).sendKeys("admin123");
-            Thread.sleep(1000);
             driver.findElement(By.xpath("//button[@type='submit']")).click();
-            Thread.sleep(2000);
 
-            // Element 1
-            By by1_linkAdmin = By.linkText(("Admin"));
-            WebElement el1_menuItemAdmin = driver.findElement(by1_linkAdmin);
-            el1_menuItemAdmin.click();
-            Thread.sleep(3000);
+            // ==== Locator 1: Menu link Admin
+            By by1_linkAdmin = By.xpath("//span[normalize-space()='Admin']");
+            WebElement el1_navItemAdmin = wait.until(ExpectedConditions.elementToBeClickable(by1_linkAdmin));
+            el1_navItemAdmin.click();
 
-            // Element 2
-            By by2_username = By.xpath(("ta"));
-            WebElement el2_inputUsername = driver.findElement(by2_username);
-//            el2_inputUsername();
-            Thread.sleep(3000);
+            // ==== Locator 2: Menu link PIM
+            By by2_linkPIM = By.xpath("//span[normalize-space()='PIM']");
+            WebElement el2_navItemPIM = wait.until(ExpectedConditions.elementToBeClickable(by2_linkPIM));
+//            el2_navItemPIM.click();
+
+            // ==== Locator 3: Menu link Leave
+            By by3_linkLeave = By.xpath("//span[normalize-space()='Leave']");
+            WebElement el3_navItemLeave = wait.until(ExpectedConditions.elementToBeClickable(by3_linkLeave));
+//            el3_navItemLeave.click();
+
+            // ================= Back to page Admin =================
+//            el1_navItemAdmin = wait.until(ExpectedConditions.elementToBeClickable(by1_linkAdmin));
+//            el1_navItemAdmin.click();
+
+            // ==== Locator 4: Input Username
+            By by4_username = By.xpath("//label[text()='Username']/following::input[1]");
+            WebElement el4_inputUsername = wait.until(ExpectedConditions.elementToBeClickable(by4_username));
+            el4_inputUsername.sendKeys("ja");
+
+            // ==== Locator 5: Select User Role
+            By by5_userrole = By.xpath("//label[text()='User Role']/following::div[contains(@class,'oxd-select-text')][1]");
+            WebElement el5_selectUserRole = wait.until(ExpectedConditions.elementToBeClickable(by5_userrole));
+            el5_selectUserRole.click();
+
+            // ==== Locator 6: Option Admin inside User Role
+            By by6_optAdmin = By.xpath("//div[@role='listbox']//span[text()='Admin']");
+            WebElement el6_optionRoleAdmin = wait.until(ExpectedConditions.visibilityOfElementLocated(by6_optAdmin));
+            el6_optionRoleAdmin.click();
+
+            // ==== Locator 7: Option ESS inside User Role
+            By by7_optESS = By.xpath("//span[text()='ESS']");
+
+            // ==== Locator 8: Input Employee Name
+            By by8_employeeName = By.xpath("//input[@placeholder='Type for hints...']");
+            WebElement el8_inputEmployeeName = wait.until(ExpectedConditions.elementToBeClickable(by8_employeeName));
+            el8_inputEmployeeName.sendKeys("pri");
 
 
-            //            WebElement el_2 = driver.findElement(By.cssSelector("oxd-main-menu-item-wrapper:nth-child(2)"));
-            //            WebElement el_3 = driver.findElement(By.cssSelector("oxd-main-menu-item-wrapper:nth-child(3)"));
-            //            WebElement el_4 = driver.findElement(By.cssSelector("oxd-main-menu-item-wrapper:nth-child(3)"));
+            // ================= Open User Role & choose ESS instead of Admin =================
+            wait.until(ExpectedConditions.textToBePresentInElement(el5_selectUserRole, "Admin"));
+            el5_selectUserRole = wait.until(ExpectedConditions.elementToBeClickable(by5_userrole));
+            el5_selectUserRole.click();
+            WebElement el7_optionRoleESS = wait.until(ExpectedConditions.elementToBeClickable(by7_optESS));
+            el7_optionRoleESS.click();
+
             //
             Thread.sleep(5000);
             driver.quit();
