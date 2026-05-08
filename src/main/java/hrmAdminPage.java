@@ -73,7 +73,6 @@ public class hrmAdminPage {
             el5_selectUserRole.click();
             WebElement el7_optionRoleESS = wait.until(ExpectedConditions.elementToBeClickable(by7_optESS));
             el7_optionRoleESS.click();
-
             //
             Thread.sleep(5000);
             driver.quit();
