@@ -74,19 +74,15 @@ public class hrmAdminPage {
             WebElement el7_optionRoleESS = wait.until(ExpectedConditions.elementToBeClickable(by7_optESS));
             el7_optionRoleESS.click();
 
-            // ==== Locator 9: Button Reset
             By by9_reset = By.xpath("//button[normalize-space()='Reset']");
             WebElement el9_btnReset = wait.until(ExpectedConditions.elementToBeClickable(by9_reset));
 
-            // ==== Locator 10: Button Search
             By by10_search = By.xpath("//button[normalize-space()='Search']");
             WebElement el10_btnSearch = wait.until(ExpectedConditions.elementToBeClickable(by10_search));
 
-            // ==== Locator 11: Nav Item User Management
             By by11_userManagement = By.xpath("//span[normalize-space()='User Management']");
             WebElement el11_navItemUserManagement = wait.until(ExpectedConditions.elementToBeClickable(by11_userManagement));
 
-            // ==== Locator 12: Cell1 Username
             By by12 = By.xpath("(//div[@class='oxd-table-card'])[2]//div[@role='cell'][2]");
             WebElement el12 = wait.until(ExpectedConditions.elementToBeClickable(by12));
 
@@ -102,15 +98,32 @@ public class hrmAdminPage {
             By by16 = By.xpath("//div[@role='columnheader'][contains(.,'User Role')]");
             WebElement el16 = wait.until(ExpectedConditions.elementToBeClickable(by16));
 
-//            By by17 = By.xpath("(//div[@class='oxd-table-header-cell'])//span[normalize-space()='Employee Name']");
-//            WebElement el17 = wait.until(ExpectedConditions.elementToBeClickable(by17));
+            By by17 = By.xpath("//div[@role='columnheader'][contains(.,'Employee Name')]");
+            WebElement el17 = wait.until(ExpectedConditions.elementToBeClickable(by17));
+
+            By by18 = By.cssSelector(".oxd-topbar-header-breadcrumb-level");
+            WebElement el18 = wait.until(ExpectedConditions.visibilityOfElementLocated(by18));
+
+            By by19 = By.cssSelector("button.oxd-main-menu-button");
+            WebElement el19 = wait.until(ExpectedConditions.visibilityOfElementLocated(by19));
+
+            By by20 = By.xpath("//div[@class='oxd-table-filter-header']//i");
+            WebElement el20 = wait.until(ExpectedConditions.visibilityOfElementLocated(by20));
+
+            By by21 = By.xpath("//div[@class='orangehrm-header-container']//button");
+            WebElement el21 = wait.until(ExpectedConditions.visibilityOfElementLocated(by21));
 
             System.out.printf("el12: %s\n", el12.getText());
             System.out.printf("el13: %s\n", el13.getText());
             System.out.printf("el14: %s\n", el14.getTagName());
             System.out.printf("el15: %s\n", el15.getTagName());
             System.out.printf("el16: %s\n", el16.getText());
-//            System.out.printf("el17: %s\n", el17.getText());
+            System.out.printf("el17: %s\n", el17.getText());
+            System.out.printf("el18: %s\n", el18.getText());
+            System.out.printf("el19: %s\n", el19.getTagName());
+            System.out.printf("el20: %s\n", el20.getTagName());
+            System.out.printf("el21: %s\n", el21.getText());
+
             //
             Thread.sleep(5000);
             driver.quit();
