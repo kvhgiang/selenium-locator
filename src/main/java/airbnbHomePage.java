@@ -23,49 +23,69 @@ public class airbnbHomePage {
 
             By by1 = By.xpath("//nav[contains(@class,'nav-menu')]/div/a");
             WebElement el1 = wait.until(ExpectedConditions.elementToBeClickable(by1));
+            System.out.printf("el1: %s\n", el1.getText());
 
             By by2 = By.xpath("//ul[contains(@class,'menu-phone')]/li[1]/a");
             WebElement el2 = wait.until(ExpectedConditions.elementToBeClickable(by2));
+            System.out.printf("el2: %s\n", el2.getText());
 
             By by3 = By.xpath("//ul[contains(@class,'menu-phone')]/li[2]/a");
             WebElement el3 = wait.until(ExpectedConditions.elementToBeClickable(by3));
+            System.out.printf("el3: %s\n", el3.getText());
 
             By by4 = By.xpath("//nav[contains(@class,'nav-menu')]/div/div[1]/button[1]");
             WebElement el4 = wait.until(ExpectedConditions.elementToBeClickable(by4));
+            el4.click();
+            System.out.println("el4: clicked");
 
             By by5 = By.xpath("//p[text()='Địa điểm']//parent::div");
             WebElement el5 = wait.until(ExpectedConditions.elementToBeClickable(by5));
+            el5.click();
+            System.out.println("el5: clicked");
 
             By by6 = By.xpath("//div[p[text()='Địa điểm']]/following-sibling::div[2]");
             WebElement el6 = wait.until(ExpectedConditions.elementToBeClickable(by6));
+            el6.click();
+            System.out.println("el6: clicked");
 
             By by7 = By.xpath("//div[p[text()='Địa điểm']]/following-sibling::div[4]");
             WebElement el7 = wait.until(ExpectedConditions.elementToBeClickable(by7));
-
-            By by8 = By.xpath("//p[contains(text(),'Thêm khách')]" +
-                    "/ancestor::div[contains(@class,'cursor-pointer')]" +
-                    "/following-sibling::div//button[last()]");
-            WebElement el8 = wait.until(ExpectedConditions.elementToBeClickable(by8));
-//
-//            By by20 = By.xpath("//div[@class='oxd-table-filter-header']//i");
-//            WebElement el20 = wait.until(ExpectedConditions.visibilityOfElementLocated(by20));
-//
-//            By by21 = By.xpath("//div[@class='orangehrm-header-container']//button");
-//            WebElement el21 = wait.until(ExpectedConditions.visibilityOfElementLocated(by21));
-
-            System.out.printf("el1: %s\n", el1.getText());
-            System.out.printf("el2: %s\n", el2.getText());
-            System.out.printf("el3: %s\n", el3.getText());
-            el4.click();
-            System.out.println("el4: clicked");
-            el5.click();
-            System.out.println("el5: clicked");
-            el6.click();
-            System.out.println("el6: clicked");
             el7.click();
             System.out.println("el7: clicked");
-            el8.click();
+
+            By by8 = By.xpath("//div[p[text()='Địa điểm']]/following-sibling::div[4]" +
+                    "//div[2]//button[last()]");
+            WebElement el8 = wait.until(ExpectedConditions.elementToBeClickable(by8));
+            for (int i = 0; i < 20; i++) {el8.click();}
             System.out.println("el8: clicked");
+
+            By by9 = By.xpath("//div[p[text()='Địa điểm']]/following-sibling::div[4]" +
+                    "//div[2]//button[1]");
+            WebElement el9 = wait.until(ExpectedConditions.elementToBeClickable(by9));
+            for (int i = 0; i < 15; i++) {el9.click();}
+            System.out.println("el9: clicked");
+
+            By by10 = By.xpath("//button[text()='Loại nơi ở']");
+            WebElement el10 = wait.until(ExpectedConditions.elementToBeClickable(by10));
+            el10.click();
+            System.out.println("el10: clicked");
+
+            By by11 = By.xpath("//button[text()='Giá']");
+            WebElement el11 = wait.until(ExpectedConditions.elementToBeClickable(by11));
+            el11.click();
+            System.out.println("el11: clicked");
+
+            By by12 = By.xpath("//a[contains(@href, '/rooms/')][1]");
+            WebElement el12 = wait.until(ExpectedConditions.visibilityOfElementLocated(by12));
+            System.out.printf("el12: %s\n", el12.getAttribute("href"));
+
+            By by13 = By.xpath("//a[contains(@href, '/rooms/')][2]//h2");
+            WebElement el13 = wait.until(ExpectedConditions.visibilityOfElementLocated(by13));
+            System.out.printf("el13: %s\n", el13.getText());
+
+            By by14 = By.xpath("//a[contains(@href, '/rooms/')][3]//p");
+            WebElement el14 = wait.until(ExpectedConditions.visibilityOfElementLocated(by14));
+            System.out.printf("el13: %s\n", el14.getText());
 
             Thread.sleep(2000);
             driver.quit();
